@@ -10,12 +10,14 @@ import path from 'path';
  * returns the pre-recorded json response
  */
 export default function fetch(urlStr, opts) {
-  return new Promise(function(reject, resolve) {
-    var url = URL.parse(urlStr);
-    var filename = path.join('.', url.query.cmd + '.json');
+  return new Promise(function(resolve, reject) {
+    var url = URL.parse(urlStr, true);
+    var filename = path.join(__dirname, url.query.cmd + '.json');
     fs.readFile(filename, function(err,body) {
       if (err) reject(err);
-      else resolve(body);
+      else resolve({
+        json: () => Promise.resolve(JSON.parse(body))
+      });
     });
   });
 };

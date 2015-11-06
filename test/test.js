@@ -28,9 +28,11 @@ describe('Dreamy', function() {
     });
 
     it('should return an a list of domain registrations', function() {
-      var regs = dreamy.registrations;
-      assert.instanceOf(regs, Promise);
-      assert.eventually.isArray(regs);
+      var regsP = dreamy.registrations;
+      assert.instanceOf(regsP, Promise);
+      assert.eventually.isObject(regsP);
+      assert.eventually.property(regsP, 'data');
+      assert.eventually.propertyVal(regsP, 'result', 'success');
     });
 
   });
