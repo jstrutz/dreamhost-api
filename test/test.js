@@ -1,7 +1,7 @@
 import Dreamy from '../';
-import { assert } from 'chai';
 import fetch from './mocks/fetch';
 import {Promise} from 'es6-promise';
+import {assert} from './helper';
 
 const PUBLIC_TEST_KEY = "6SHU5P2HLDAYECUM";
 
@@ -30,9 +30,8 @@ describe('Dreamy', function() {
     it('should return an a list of domain registrations', function() {
       var regs = dreamy.registrations;
       assert.instanceOf(regs, Promise);
-      regs.then( value => assert.isArray(value));
+      assert.eventually.isArray(regs);
     });
-
 
   });
 
