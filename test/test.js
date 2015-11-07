@@ -27,13 +27,18 @@ describe('Dreamy', function() {
       dreamy = new Dreamy(PUBLIC_TEST_KEY, { fetch });
     });
 
-    it('should return an a list of domain registrations', function() {
+    it('should return an a promise of a list of domain registrations', function() {
       var regsP = dreamy.registrations;
       assert.instanceOf(regsP, Promise);
-      assert.eventually.isObject(regsP);
-      assert.eventually.property(regsP, 'data');
-      assert.eventually.propertyVal(regsP, 'result', 'success');
+
+      return assert.isFulfilled(regsP).then( (regs) => {
+        assert.isArray(regs);
+        for (let reg of regs) {
+          assert.property(reg, 'domain');
+        }
+      });
     });
+
 
   });
 
