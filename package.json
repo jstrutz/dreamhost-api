@@ -1,6 +1,6 @@
 {
   "name": "dreamhost-api",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Javascript interface to the Dreamhost API",
   "main": "dist/node/index.js",
   "scripts": {
