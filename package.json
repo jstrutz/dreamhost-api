@@ -1,13 +1,14 @@
 {
-  "name": "dreamy",
+  "name": "dreamhost-api",
   "version": "0.0.1",
-  "description": "",
+  "description": "Javascript interface to the Dreamhost API",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --compilers js:babel-core/register test/test.js",
     "test:watch": "npm run test -- --watch"
   },
   "author": "Jason Strutz <j@jasonstrutz.com> (http://jasonstrutz.com)",
+  "bugs": "https://github.com/jstrutz/dreamhost-api",
   "license": "ISC",
   "dependencies": {
     "es6-promise": "^3.0.2",
